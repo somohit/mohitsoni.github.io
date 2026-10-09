@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohit Soni</title>
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --bg-section: #f5f5f7;
+      --text-primary: #1d1d1f;
+      --text-secondary: #86868b;
+      --button-bg: #0071e3;
+      --button-hover: #0077ed;
+      --button-active: #0062c4;
+      --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      font-family: var(--font-stack);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+
+    /* Fixed top navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    nav {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 400;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    /* Section base */
+    section {
+      padding: 120px 24px 80px 24px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    /* Hero section */
+    #hero {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 140px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 4.8rem);
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+
+    .tagline {
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      color: var(--text-secondary);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: 48px;
+    }
+
+    .btn-authenticate {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 38px;
+      background-color: var(--button-bg);
+      color: #ffffff;
+      font-size: 1.05rem;
+      font-weight: 400;
+      text-decoration: none;
+      border-radius: 980px;
+      letter-spacing: -0.01em;
+      box-shadow: 0 4px 14px rgba(0, 113, 227, 0.2);
+      transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+                  transform 0.15s ease, 
+                  box-shadow 0.2s ease;
+    }
+
+    .btn-authenticate:hover {
+      background-color: var(--button-hover);
+      box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .btn-authenticate:active {
+      background-color: var(--button-active);
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(0, 113, 227, 0.15);
+    }
+
+    /* About Section */
+    #about {
+      background-color: var(--bg-section);
+      border-radius: 28px;
+      margin: 40px auto;
+      padding: 64px;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    .section-text {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 680px;
+    }
+
+    /* Interests Section */
+    #interests {
+      padding-top: 60px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background-size: cover;
+      background-position: center;
+      height: 420px;
+      border-radius: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%);
+      z-index: 1;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+
+    /* Card Cover Images */
+    .travel {
+      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600&auto=format&fit=crop');
+    }
+
+    .driving {
+      background-image: url('https://images.unsplash.com/photo-1506015391300-4802dc74de2e?q=80&w=600&auto=format&fit=crop');
+    }
+
+    .music {
+      background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop');
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      padding: 60px 24px;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      margin-top: 80px;
+    }
+
+    @media (max-width: 768px) {
+      #about {
+        padding: 40px 24px;
+      }
+      .brand span {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="#" class="brand">
+        <img class="avatar" src="profile.jpg" alt="Mohit Soni">
+        <span>mohitsoni.co.in</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#interests">Interests</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero / Landing section -->
+    <section id="hero">
+      <h1>Mohit Soni</h1>
+      <p class="tagline">Personal Workspace</p>
+      <div>
+        <a href="https://sso.godaddy.com/login?app=email&realm=pass" class="btn-authenticate">
+          Authenticate
+        </a>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-text">
+        Hello! I’m Mohit Soni. This serves as my private landing workspace and access point. I’m passionate about exploration, open roads, and immersive acoustics.
+      </p>
+    </section>
+
+    <!-- Interests Section -->
+    <section id="interests">
+      <h2 class="section-title">Interests</h2>
+      <div class="grid">
+        <div class="card travel">
+          <div class="card-content">
+            <h3>Travel</h3>
+            <p>Capturing culture and shifting landscapes.</p>
+          </div>
+        </div>
+        <div class="card driving">
+          <div class="card-content">
+            <h3>Driving</h3>
+            <p>Seeking out scenic routes and open highways.</p>
+          </div>
+        </div>
+        <div class="card music">
+          <div class="card-content">
+            <h3>Music</h3>
+            <p>From visual synth-wave backdrops to high-tempo rhythm.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> Mohit Soni. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
