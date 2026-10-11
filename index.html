@@ -76,7 +76,8 @@
 
     .nav-links {
       display: flex;
-      gap: 20px;
+      align-items: center;
+      gap: 24px;
     }
 
     .nav-links a {
@@ -91,6 +92,37 @@
       color: var(--text-primary);
     }
 
+    /* Top right compact Mail button */
+    .btn-mail {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background-color: var(--button-bg);
+      color: #ffffff !important;
+      font-size: 0.8rem !important;
+      font-weight: 400;
+      border-radius: 980px;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .btn-mail:hover {
+      background-color: var(--button-hover);
+      color: #ffffff !important;
+    }
+
+    .btn-mail:active {
+      background-color: var(--button-active);
+      transform: scale(0.97);
+    }
+
+    .mail-icon {
+      width: 13px;
+      height: 13px;
+      fill: currentColor;
+    }
+
     /* Section base */
     section {
       padding: 120px 24px 80px 24px;
@@ -98,23 +130,23 @@
       margin: 0 auto;
     }
 
-    /* Hero section */
+    /* Cleaned Hero section without button */
     #hero {
-      min-height: 90vh;
+      min-height: 75vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding-top: 140px;
+      padding-top: 100px;
     }
 
     h1 {
-      font-size: clamp(3rem, 7vw, 4.8rem);
+      font-size: clamp(3.2rem, 7.5vw, 5.2rem);
       font-weight: 600;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.03em;
       line-height: 1.05;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .tagline {
@@ -122,37 +154,6 @@
       color: var(--text-secondary);
       font-weight: 400;
       letter-spacing: -0.01em;
-      margin-bottom: 48px;
-    }
-
-    .btn-authenticate {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 38px;
-      background-color: var(--button-bg);
-      color: #ffffff;
-      font-size: 1.05rem;
-      font-weight: 400;
-      text-decoration: none;
-      border-radius: 980px;
-      letter-spacing: -0.01em;
-      box-shadow: 0 4px 14px rgba(0, 113, 227, 0.2);
-      transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
-                  transform 0.15s ease, 
-                  box-shadow 0.2s ease;
-    }
-
-    .btn-authenticate:hover {
-      background-color: var(--button-hover);
-      box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3);
-      transform: translateY(-1px);
-    }
-
-    .btn-authenticate:active {
-      background-color: var(--button-active);
-      transform: translateY(0);
-      box-shadow: 0 2px 8px rgba(0, 113, 227, 0.15);
     }
 
     /* About Section */
@@ -280,6 +281,12 @@
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#interests">Interests</a>
+        <a href="https://sso.godaddy.com/login?app=email&realm=pass" class="btn-mail" target="_blank" rel="noopener noreferrer">
+          <svg class="mail-icon" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+          Mail
+        </a>
       </div>
     </nav>
   </header>
@@ -289,11 +296,6 @@
     <section id="hero">
       <h1>Mohit Soni</h1>
       <p class="tagline">Personal Workspace</p>
-      <div>
-        <a href="https://sso.godaddy.com/login?app=email&realm=pass" class="btn-authenticate">
-          Authenticate
-        </a>
-      </div>
     </section>
 
     <!-- About Me Section -->
